@@ -5,8 +5,60 @@
 </head>
 <body>
   <script>
-  function lastLetter (string) {
-    return string.slice(-1)
+  function computerPlay() {
+    let play = Math.random()
+    if (play <= 0.33) {
+      return 'rock'
+    }
+    else if (play <= 0.66) {
+      return 'paper'
+    }
+    else {
+      return 'scissors'
+    }
+  }
+
+  function RPSround() {
+    let playerSelection = prompt('What do you want to play?')
+    playerSelection = playerSelection.toLowerCase()
+    let computerSelection = computerPlay()
+    console.log(playerSelection, computerSelection)
+    if (playerSelection === computerSelection) {
+      return 'Draw'
+    }
+    else if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+             (playerSelection === 'paper' && computerSelection === 'rock') ||
+             (playerSelection === 'scissors' && computerSelection === 'paper')) {
+      return 'Win'
+    }
+    else {
+      return 'Loss'
+    }
+  }
+
+  function RPSgame() {
+    let playerScore = 0
+    let computerScore = 0
+    for (var i = 0; i < 5; i++) {
+      round = RPSround()
+      if (round === 'Win') {
+        playerScore++
+      }
+      else if (round === 'Loss' ) {
+        computerScore++
+      }
+    }
+
+    console.log(playerScore, computerScore)
+    if (playerScore === computerScore) {
+      return 'Draw'
+    }
+    else if (playerScore > computerScore) {
+      return 'You won the game'
+    }
+    else {
+      return 'You lost the game'
+    }
   }
   </script>
 </body>
